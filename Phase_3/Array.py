@@ -72,16 +72,26 @@ class ArrayClass:
             raise IndexError("Index out of bounds")
 
     def partition(self, arr, low, high):
+        # selecting pivot point as last element
         pivot = arr[high]
+        # selecting "i" pointer as "lower bound" - 1
         i = low - 1
+        # selection "j" as "lower bound"
         j = low
+
+        # condition to iterate is "j" should be less than "upper bound - (high)", :. We want to iterate till pivot exculding pivot
         while j < high:
+            # if j's value is less than pivot, else do nothing keep it there only
             if arr[j] < pivot:
+                # increment i by 1
                 i += 1
+                # swap "i" and "j"'s value
                 arr[i], arr[j] = arr[j], arr[i]
+            # our, "manjhi" variable "j" should be incremented by 1 everytime irrespective of any condition
             j += 1
+        # when the j index is equal to pivot index - 1, then we swap values of our pivot and ("i" + 1) element
         arr[high], arr[i + 1] = arr[i + 1], arr[high]
-        print(i + 1)
+        # we return i + 1 because its the new pivot
         return i + 1
 
     # Array Sorting Methods :
